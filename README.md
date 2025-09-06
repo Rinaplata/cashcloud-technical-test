@@ -21,7 +21,7 @@ Includes tabs with filters, configurable table, contextual actions, and state pe
 
 ---
 
-## ⚙️ Instalación y ejecución
+## ⚙️ Installation and execution
 
 Clona el repo y entra a la carpeta:
 

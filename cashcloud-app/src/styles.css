@@ -16,6 +16,7 @@
   --surface-300: #333333;
   --surface-400: #424242;
   --surface-500: #505050;
+  --suface-600: #535862;
 
   /* Color state*/
   --payment-status-pending-approval-processing: #FFAD33;
@@ -31,10 +32,13 @@
   --payment-status-disbursement: #33105C;
   --payment-status-disbursement-bg: rgba(235, 234, 252, 1);
 
-  /* fonr size*/
+  /* font size*/
+  --font-size-text-xs: 0.75rem;
   --font-size-text-sm: 0.875rem;
   --font-size-text-md: 1rem;
-  --font-size-display-xs: 1.5rem;
+  --font-size-text-lg: 1.125rem;
+  --font-size-text-xl: 1.25rem;
+  --font-size-display-sm: 1.5rem;
 
   /* font weight */
   --font-weight-medium: 500;

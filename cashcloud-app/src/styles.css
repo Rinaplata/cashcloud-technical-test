@@ -19,10 +19,17 @@
 
   /* Color state*/
   --payment-status-pending-approval-processing: #FFAD33;
+  --payment-status-pending-aprproval-processing-bg: rgba(255, 247, 235, 1);
   --payment-status-pending-signature: #3B82F6;
+  --payment-status-pending-signature-bg: rgba(234, 236, 240, 1);
   --payment-status-reprinted: #6966FF;
+  --payment-status-reprinted-bg: rgba(240, 240, 255, 1);
   --payment-status-completed-mailed: #0D8A79;
+  --payment-status-completed-mailed-bg: rgba(231, 249, 247, 1);
   --payment-status-rejected-voided: #EF4444;
+  --payment-status-rejected-voided-bg: rgba(253, 236, 236, 1);
+  --payment-status-disbursement: #33105C;
+  --payment-status-disbursement-bg: rgba(235, 234, 252, 1);
 
   /* fonr size*/
   --font-size-text-sm: 0.875rem;

@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  /* Primary color*/
+  --primary-color: #7F56D9;
+  --primary-color-text: #ffffff;
+
+  --text-color: #f0f0f0;
+  --text-color-secondary: #717680;
+
+  /* Surface color */
+  --surface-0: #1a1a1a;
+  --surface-50: #202020;
+  --surface-100: #252525;
+  --surface-200: #2e2e2e;
+  --surface-300: #333333;
+  --surface-400: #424242;
+  --surface-500: #505050;
+
+  /* Color state*/
+  --payment-status-pending-approval-processing: #FFAD33;
+  --payment-status-pending-signature: #3B82F6;
+  --payment-status-reprinted: #6966FF;
+  --payment-status-completed-mailed: #0D8A79;
+  --payment-status-rejected-voided: #EF4444;
+
+  /* fonr size*/
+  --font-size-text-sm: 0.875rem;
+  --font-size-text-md: 1rem;
+  --font-size-display-xs: 1.5rem;
+
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}

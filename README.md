@@ -14,16 +14,16 @@ Includes tabs with filters, configurable table, contextual actions, and state pe
 ## 🚀 Stack Tecnológico
 - **Angular 19** (standalone components)
 - **TypeScript** con `strict` habilitado
-- **RxJS** para gestión de estado (Signals / Component Store)
+- **RxJS** for gestion (Signals / Component Store)
 - **PrimeNG 19** library of user interface components
-- **Playwright** para pruebas E2E
-- **ESLint** para linting y formateo
+- **Playwright** for testig 
+- **ESLint** for linting and formatting
 
 ---
 
 ## ⚙️ Installation and execution
 
-Clona el repo y entra a la carpeta:
+Clone the repo and enter the folder.
 
 ```bash
 git clone 

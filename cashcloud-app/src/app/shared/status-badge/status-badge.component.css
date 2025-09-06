@@ -1,0 +1,56 @@
+.status-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-text-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 13px;
+  border-radius: 16px;
+  border-bottom: 1px solid rgba(234, 236, 240, 1);
+  width: auto;
+  height: 22px;
+  font-weight: var(--font-weight-medium);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background-color: currentColor;
+}
+
+.badge-pending-approval {
+  color: var(--payment-status-pending-approval-processing);
+  background-color: var(--payment-status-pending-aprproval-processing-bg);
+}
+
+.badge-pending-signature {
+  color: var(--payment-status-pending-signature);
+  background-color: var(--payment-status-pending-signature-bg);
+}
+
+.badge-disbursement {
+  color: var(--payment-status-disbursement);
+  background-color: var(--payment-status-disbursement-bg);
+}
+
+.badge-completed {
+  color: var(--payment-status-completed-mailed);
+  background-color: var(--payment-status-completed-mailed-bg);
+}
+
+.badge-rejected {
+  color: var(--payment-status-rejected-voided);
+  background-color: var(--payment-status-rejected-voided-bg);
+}
+
+.badge-reprinted {
+  color: var(--payment-status-reprinted);
+  background-color: var(--payment-status-reprinted-bg);
+}
+
+.badge-default {
+  color: #4b5563;
+  background-color: #f0f0f0;
+}
+

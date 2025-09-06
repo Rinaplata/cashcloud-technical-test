@@ -36,6 +36,8 @@
   --font-size-text-md: 1rem;
   --font-size-display-xs: 1.5rem;
 
+  /* font weight */
+  --font-weight-medium: 500;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;

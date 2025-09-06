@@ -1,0 +1,25 @@
+<p-card class="custom-card">
+  <ng-template pTemplate="header">
+    <div class="content-card">
+    <div class="icon-wrapper">
+      <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="29" cy="29" r="28.5" fill="#F9F5FF" stroke="#E9D7FE" />
+        <rect x="13" y="13" width="32" height="32" rx="16" fill="#7F56D9" />
+        <path
+          d="M30.6666 20.8913V24.3334C30.6666 24.8001 30.6666 25.0335 30.7575 25.2117C30.8374 25.3685 30.9649 25.496 31.1217 25.5759C31.2999 25.6667 31.5333 25.6667 32 25.6667H35.4421M32.3333 29.8333H25.6666M32.3333 33.1667H25.6666M27.3333 26.5H25.6666M30.6666 20.6667H26.3333C24.9332 20.6667 24.2331 20.6667 23.6983 20.9392C23.2279 21.1788 22.8455 21.5613 22.6058 22.0317C22.3333 22.5665 22.3333 23.2665 22.3333 24.6667V33.3333C22.3333 34.7335 22.3333 35.4335 22.6058 35.9683C22.8455 36.4387 23.2279 36.8212 23.6983 37.0609C24.2331 37.3333 24.9332 37.3333 26.3333 37.3333H31.6666C33.0668 37.3333 33.7668 37.3333 34.3016 37.0609C34.772 36.8212 35.1545 36.4387 35.3942 35.9683C35.6666 35.4335 35.6666 34.7335 35.6666 33.3333V25.6667L30.6666 20.6667Z"
+          stroke="white" stroke-width="1.336" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+    <div class="text-content">
+      <div class="title">
+        {{title}} <span class="total">{{ totalPayments }}</span>
+      </div>
+      <div class="details">
+        <span>Checks: {{ checks }}</span>
+        <span>ACH: {{ ach }}</span>
+        <span>Digital Checks: {{ digitalChecks }}</span>
+      </div>
+    </div>
+    </div>
+  </ng-template>
+</p-card>

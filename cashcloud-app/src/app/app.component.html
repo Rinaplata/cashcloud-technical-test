@@ -8,3 +8,10 @@
 </app-payment-summary-card>
 
 <app-payment-actions-summary></app-payment-actions-summary>
+
+
+<button pButton label="Open Filters" (click)="filterVisible = true">Modal Prueba</button>
+<app-filter-modal [(display)]="filterVisible" (apply)="handleFilter($event)"></app-filter-modal>
+
+
+

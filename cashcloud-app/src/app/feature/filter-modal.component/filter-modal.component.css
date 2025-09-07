@@ -1,0 +1,154 @@
+
+/* Estilos generales del diálogo */
+.custom-dialog .p-dialog {
+  border-radius: 8px; /* Radio de los bordes del modal */
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* Encabezado del diálogo */
+.custom-dialog .p-dialog-header {
+  padding: 1rem 1.5rem; /* Relleno */
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Contenido del diálogo (sección de dos columnas) */
+.custom-dialog .p-dialog-content {
+  padding: 0;
+  height: 100%;
+}
+
+/* Barra lateral (menú) */
+.sidebar {
+  width: 192px;
+  height: 100%;
+  background-color: #f8fafc;
+  padding: 12px 0;
+  border-right: 1px solid #e5e7eb;
+
+}
+
+.sidebar ul li {
+  padding: 10px 16px; /* Espaciado interno de los ítems del menú */
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 1rem;
+}
+
+.sidebar ul li:hover {
+  background-color: #f3f4f6; /* Fondo de color gris claro al pasar el mouse */
+}
+
+.sidebar .active-filter {
+  background-color: #f9f5ff; /* Color Primary/50 de Figma (#F9F5FF) */
+  border-left: 4px solid #7c3aed; /* Color Primary/600 de Figma (#7C3AED) */
+  font-weight: 600;
+  color: #6d28d9;
+}
+
+/* Área de contenido del formulario */
+.dynamic-content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.header-content h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.header-content hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem; /* Ajuste para mayor espaciado */
+}
+
+/* Contenedor del cuerpo del formulario */
+.content-body {
+  flex: 1;
+  padding-bottom: 2rem;
+}
+
+/* Estilos de los inputs y labels */
+.content-body label {
+  font-weight: 500;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.content-body .p-inputtext,
+.content-body .p-inputnumber input {
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  padding: 0.75rem 1rem;
+}
+
+/* Estilos de los checkboxes */
+.p-checkbox .p-checkbox-box {
+  width: 16px; /* Ancho */
+  height: 16px; /* Altura */
+  border-radius: 4px; /* Radio de borde */
+  border: 1px solid #d1d5db;
+}
+
+.p-checkbox.p-highlight .p-checkbox-box {
+  background-color: #7c3aed; /* Color Primary/600 de Figma */
+  border-color: #7c3aed;
+}
+
+.p-checkbox .p-checkbox-box .p-checkbox-icon {
+  color: #ffffff;
+}
+
+.p-checkbox-box:focus {
+  outline: 2px solid #7c3aed; /* Anillo de enfoque */
+  outline-offset: 2px;
+}
+
+/* Pie de página (footer) */
+.custom-dialog .p-dialog-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.custom-button-cancel {
+  border: 1px solid #d1d5db;
+  color: #4b5563;
+  background-color: transparent;
+  padding: 10px 16px;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+.custom-button-apply {
+  background-color: #7c3aed;
+  border: 1px solid #7c3aed;
+  color: #ffffff;
+  padding: 10px 16px;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+.custom-button-apply:hover {
+  background-color: #6d28d9;
+  border-color: #6d28d9;
+}
+
+.filters-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+

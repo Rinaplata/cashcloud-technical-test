@@ -1,0 +1,148 @@
+<!-- <p-dialog #filterModal [(visible)]="display" [modal]="true" header="Filter Payments" [style]="{ width: '700px' }"
+  [closable]="false" [baseZIndex]="10000" class="custom-dialog">
+  <div class="flex">
+    <div class="sidebar">
+      <ul class="list-none p-0 m-0">
+        <li *ngFor="let field of filterFields" [ngClass]="{ 'active-filter': selectedFilter === field.key }"
+          (click)="selectFilter(field.key)">
+          {{ field.name }}
+        </li>
+      </ul>
+    </div>
+
+    <form [formGroup]="filterForm" class="dynamic-content-area">
+      <div class="header-content">
+        <h4>{{ selectedFilterName }}</h4>
+        <hr />
+      </div>
+
+      <div class="content-body">
+        <div *ngIf="selectedFilter === FilterField.PAYMENT_TYPE" [formGroupName]="FilterField.PAYMENT_TYPE"
+          class="flex flex-column gap-3">
+          <div *ngFor="let category of categories" class="flex items-center">
+            <p-checkbox [inputId]="category.key" [formControlName]="category.key" [value]="category.name" />
+            <label [for]="category.key" class="ml-2">
+              {{ category.name }}
+            </label>
+          </div>
+        </div>
+
+        <div *ngIf="selectedFilter === FilterField.AMOUNT" formGroupName="amount" class="flex flex-column gap-3">
+          <label for="minAmount">Min Amount</label>
+          <p-inputNumber inputId="minAmount" formControlName="min" mode="currency" currency="USD" locale="en-US"
+            [showButtons]="true" [useGrouping]="true"></p-inputNumber>
+
+          <label for="maxAmount">Max Amount</label>
+          <p-inputNumber inputId="maxAmount" formControlName="max" mode="currency" currency="USD" locale="en-US"
+            [showButtons]="true" [useGrouping]="true"></p-inputNumber>
+        </div>
+
+        <div *ngIf="selectedFilter === FilterField.PAYEE_NAME" class="flex flex-column gap-3">
+          <label for="payeeName">Payee Name</label>
+          <input type="text" id="payeeName" pInputText formControlName="payeeName" />
+        </div>
+
+        <div *ngIf="selectedFilter === FilterField.DESTINATION" class="flex flex-column gap-3">
+          <label for="destination">Destination</label>
+          <input type="text" id="destination" pInputText formControlName="destination" />
+        </div>
+
+        <div *ngIf="selectedFilter === FilterField.PAYMENT_ID" class="flex flex-column gap-3">
+          <label for="paymentId">Payment ID</label>
+          <input type="text" id="paymentId" pInputText formControlName="paymentId" />
+        </div>
+
+        <div *ngIf="selectedFilter === FilterField.PAYMENT_STATUS" class="flex flex-column gap-3">
+          <label for="paymentStatus">Payment Status</label>
+          <input type="text" id="paymentStatus" pInputText formControlName="paymentStatus" />
+        </div>
+      </div>
+    </form>
+    <ng-template pTemplate="footer">
+      <div class="footer-buttons">
+        <button pButton class="p-button-outlined p-button-secondary custom-button-cancel" (click)="close()">
+          Cancel
+        </button>
+        <button pButton class="p-button-primary custom-button-apply" (click)="applyFilters()">
+          Apply Filters
+        </button>
+      </div>
+    </ng-template>
+  </div>
+</p-dialog>
+ -->
+<p-dialog #filterModal [(visible)]="display" [modal]="true" header="Filter Payments" class="custom-dialog" [style]="{ width: '602px', height: '309px' }"
+  [closable]="false" [baseZIndex]="10000" class="custom-dialog">
+  <div class="flex">
+    <div class="filters-container">
+    <div class="sidebar">
+      <ul class="list-none p-0 m-0">
+        <li *ngFor="let field of filterFields" [ngClass]="{ 'active-filter': selectedFilter === field.key }"
+          (click)="selectFilter(field.key)">
+          {{ field.name }}
+        </li>
+      </ul>
+    </div>
+
+    <form [formGroup]="filterForm" class="dynamic-content-area">
+      <div class="header-content">
+        <h4>{{ selectedFilterName }}</h4>
+        <hr />
+      </div>
+
+      <div class="content-body">
+        <div *ngIf="selectedFilter === FilterField.PAYMENT_TYPE" [formGroupName]="FilterField.PAYMENT_TYPE"
+          class="flex flex-column gap-3">
+          <div *ngFor="let category of categories" class="flex items-center">
+            <p-checkbox [inputId]="category.key" [formControlName]="category.key" [value]="category.name" />
+            <label [for]="category.key" class="ml-2">
+              {{ category.name }}
+            </label>
+          </div>
+        </div>
+
+        <div *ngIf="selectedFilter === FilterField.AMOUNT" [formGroupName]="FilterField.AMOUNT" class="flex flex-column gap-3">
+          <label for="minAmount">Min Amount</label>
+          <p-inputNumber inputId="minAmount" formControlName="min" mode="currency" currency="USD" locale="en-US"
+            [showButtons]="true" [useGrouping]="true"></p-inputNumber>
+
+          <label for="maxAmount">Max Amount</label>
+          <p-inputNumber inputId="maxAmount" formControlName="max" mode="currency" currency="USD" locale="en-US"
+            [showButtons]="true" [useGrouping]="true"></p-inputNumber>
+        </div>
+
+        <div *ngIf="selectedFilter === FilterField.PAYEE_NAME" class="flex flex-column gap-3">
+          <label for="payeeName">Payee Name</label>
+          <input type="text" id="payeeName" pInputText [formControlName]="FilterField.PAYEE_NAME" />
+        </div>
+
+        <div *ngIf="selectedFilter === FilterField.DESTINATION" class="flex flex-column gap-3">
+          <label for="destination">Destination</label>
+          <input type="text" id="destination" pInputText [formControlName]="FilterField.DESTINATION" />
+        </div>
+
+        <div *ngIf="selectedFilter === FilterField.PAYMENT_ID" class="flex flex-column gap-3">
+          <label for="paymentId">Payment ID</label>
+          <input type="text" id="paymentId" pInputText [formControlName]="FilterField.PAYMENT_ID" />
+        </div>
+
+        <div *ngIf="selectedFilter === FilterField.PAYMENT_STATUS" class="flex flex-column gap-3">
+          <label for="paymentStatus">Payment Status</label>
+          <input type="text" id="paymentStatus" pInputText formControlName="paymentStatus" />
+        </div>
+      </div>
+
+    </form>
+  </div>
+  </div>
+    <ng-template pTemplate="footer">
+    <div class="footer-buttons">
+      <button pButton class="p-button-outlined p-button-secondary custom-button-cancel" (click)="close()">
+        Cancel
+      </button>
+      <button pButton class="p-button-primary custom-button-apply" (click)="applyFilters()">
+        Apply Filters
+      </button>
+    </div>
+  </ng-template>
+</p-dialog>

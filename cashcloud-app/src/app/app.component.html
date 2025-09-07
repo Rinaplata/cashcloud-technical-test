@@ -1,17 +1,47 @@
-<app-status-badge [status]="PaymentStatus.PendingResponse"></app-status-badge>
-<app-payment-summary-card
-  [title]="title"
-  [totalPayments]="8000"
-  [checks]="3000"
-  [ach]="5000"
-  [digitalChecks]="1000">
-</app-payment-summary-card>
+<div class="dashboard-container">
+  <!-- Encabezado de la página -->
+  <div class="header-section">
+    <div class="breadcrumb">
+      <span>Payments</span> <span class="divider">/</span> <span>Batch #13</span>
+    </div>
+    <div class="title-container">
+      <h1>Batch #13 - CashCloud ****1123</h1>
+      <span class="payor-name">Miami Dade Tax Payor</span>
+    </div>
+  </div>
 
-<app-payment-actions-summary></app-payment-actions-summary>
+  <!-- Cards de resumen -->
+  <div class="summary-cards">
+    <app-payment-summary-card
+      [title]="'No. of Payments'"
+      [totalPayments]="8000"
+      [checks]="3000"
+      [ach]="5000"
+      [digitalChecks]="1000">
+    </app-payment-summary-card>
+    <app-payment-summary-card
+      [title]="'Batch Total'"
+      [totalPayments]="199999"
+      [checks]="45000"
+      [ach]="45000"
+      [digitalChecks]="1000">
+    </app-payment-summary-card>
+  </div>
 
+  <!-- Panel de advertencia y botones de acción -->
+  <div class="warning-actions-panel">
+    <div class="warning-text">
+      <i class="pi pi-exclamation-circle"></i>
+      One or more workflows are missing. Non-admins need approval, signature, and disbursement workflows to process payments.
+    </div>
+    <div class="action-buttons">
+      <button pButton icon="pi pi-upload" class="p-button-secondary p-button-outlined">Manual Import</button>
+      <button pButton  icon="pi pi-plus" class="p-button-primary">Create Payment</button>
+    </div>
+  </div>
 
-<button pButton label="Open Filters" (click)="filterVisible = true">Modal Prueba</button>
-<app-filter-modal [(display)]="filterVisible" (apply)="handleFilter($event)"></app-filter-modal>
+  <!-- Componente de la tabla de pagos -->
+  <app-payment-table></app-payment-table>
 
-
+</div>
 

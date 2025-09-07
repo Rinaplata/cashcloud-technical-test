@@ -1,48 +1,27 @@
-import { Transaction } from './core/models/transaction.model';
-import { CommonModule, NgLocalization } from '@angular/common';
-import { Component, effect, inject, OnInit } from '@angular/core';
-import { StatusBadgeComponent } from './shared/status-badge/status-badge.component';
-import { PaymentStatus } from './core/enums/paymentStatus';
-import { PaymentSummaryCardComponent } from './shared/payment-summary-card/payment-summary-card.component';
-import { PaymentActionsSummaryComponent } from './feature/payment-actions-summary/payment-actions-summary.component';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
-import { FilterModalComponent } from './feature/filter-modal.component/filter-modal.component';
-import { TransactionServiceTsService } from './core/services/transaction.service.ts.service';
+import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
+import { PaymentSummaryCardComponent } from './shared/payment-summary-card/payment-summary-card.component';
+import { PaymentTableComponent } from './feature/payment-table/payment-table.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     CommonModule,
-    StatusBadgeComponent,
-    PaymentSummaryCardComponent,
-    PaymentActionsSummaryComponent,
     ButtonModule,
-    FilterModalComponent,
+    CardModule,
+    TableModule,
+    PaymentSummaryCardComponent,
+    PaymentTableComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  transactions: Transaction[] = [];
-  loading = true;
-  private transactionService = inject(TransactionServiceTsService);
-
-  ngOnInit(): void {
-    this.transactionService.getTransactions().subscribe({
-      next: (data) => {
-        this.transactions = data;
-        this.loading = false;
-        console.log('Datos cargados:', this.transactions);
-      },
-      error: (err) => {
-        console.error('Error al obtener las transacciones:', err);
-        this.loading = false;
-      }
-    });
-  }
-
-  PaymentStatus = PaymentStatus;
   title = 'No. of Payments:';
 
   filterVisible = false;

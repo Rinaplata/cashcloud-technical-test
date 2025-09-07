@@ -1,0 +1,82 @@
+<div class="card">
+  <div class="table-header">
+    <h2>Approve Payments <span class="badge">10</span></h2>
+    <div class="header-actions">
+      <div class="column-options">
+        <p-button type="button" label="Columns" icon="pi pi-th-large" [text]="true" [outlined]="true"
+          class="p-button-secondary-outlined"></p-button>
+        <span class="column-count">12</span>
+      </div>
+      <p-button type="button" label="Filters" icon="pi pi-filter" [text]="true" [outlined]="true"
+        class="p-button-secondary-outlined"></p-button>
+    </div>
+  </div>
+
+  <app-payment-actions-summary></app-payment-actions-summary>
+
+  <p-table [value]="payments" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="10"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[10, 20, 50, { showAll: 'All' }]" [globalFilterFields]="['ID', 'Payee', 'Status']">
+    <ng-template pTemplate="header">
+      <tr>
+<!--         <th>
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th> -->
+        <th pSortableColumn="paymentIdType">Payment ID/Type
+          <p-sortIcon field="paymentIdType"></p-sortIcon>
+        </th>
+        <th pSortableColumn="payee">Payee
+          <p-sortIcon field="payee"></p-sortIcon>
+        </th>
+        <th pSortableColumn="address">Address
+          <p-sortIcon field="address"></p-sortIcon>
+        </th>
+        <th pSortableColumn="amount">Amount
+          <p-sortIcon field="amount"></p-sortIcon>
+        </th>
+        <th pSortableColumn="status">Status
+          <p-sortIcon field="status"></p-sortIcon>
+        </th>
+        <th pSortableColumn="date">Date
+          <p-sortIcon field="date"></p-sortIcon>
+        </th>
+        <th pSortableColumn="destination">Destination
+          <p-sortIcon field="destination"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-payment>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="payment"></p-tableCheckbox>
+        </td>
+        <td>
+          <div class="payment-id">
+            <span class="id-text">ID: {{ payment.id }}</span>
+            <span class="type-text">{{ payment.type }}</span>
+          </div>
+        </td>
+        <td>{{ payment.payee }}</td>
+        <td>{{ payment.address }}</td>
+        <td>{{ payment.amount }}</td>
+        <td>
+          <span class="status-badge" [ngClass]="payment.statusClass">{{ payment.status }}</span>
+        </td>
+        <td>{{ payment.date }}</td>
+        <td>{{ payment.destination }}</td>
+        <td>
+          <i class="pi pi-ellipsis-h table-action-icon"></i>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+      <div class="p-paginator-left-content">
+        <p-button type="button" icon="pi pi-arrow-left" label="Previous" [text]="true" [outlined]="true"
+          class="p-button-secondary-outlined"></p-button>
+        <p-button type="button" icon="pi pi-arrow-right" label="Next" [text]="true" [outlined]="true"
+          class="p-button-secondary-outlined"></p-button>
+      </div>
+    </ng-template>
+  </p-table>
+</div>

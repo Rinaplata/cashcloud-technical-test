@@ -5,7 +5,7 @@
         pButton
         type="button"
         class="custom-tab-button"
-        [class.active-tab]="activeTab === tab.key"
+        [class.active-tab]="activeTab() === tab.key"
         [ngClass]="{'custom-tab-badge-warning': tab.isWarning}"
         (click)="setActiveTab(tab.key)"
         [attr.aria-label]="tab.ariaLabel"
@@ -17,7 +17,7 @@
           [ngClass]="{
             'custom-tab-button-warning custom-tab-badge-warning':
               (tab.key === 'sign' || tab.key === 'disburse') &&
-              activeTab === tab.key
+              activeTab() === tab.key
           }"
         >
           {{ getTotal(tab.key) }}
@@ -25,12 +25,12 @@
       </button>
     </ng-container>
 
-    <div class="dropdown-container" (clickOutside)="dropdownOpen = false">
+    <div class="dropdown-container" (clickOutside)="dropdownOpen.set(false)">
       <button
         pButton
         type="button"
         class="custom-tab-button"
-        [class.active-tab]="activeTab === 'more'"
+        [class.active-tab]="activeTab() === 'more'"
         (click)="toggleDropdown()"
         aria-label="More actions"
       >
@@ -43,7 +43,7 @@
         <li *ngFor="let action of moreActions">
           <button
             type="button"
-            (click)="action.command(); dropdownOpen = false"
+            (click)="action.command(); dropdownOpen.set(false)"
           >
             {{ action.label }}
           </button>

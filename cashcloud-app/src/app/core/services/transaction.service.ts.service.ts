@@ -1,5 +1,5 @@
 import { effect, Injectable, signal } from '@angular/core';
-import { Transaction } from '../models/transaction.model';
+import { Payment, Transaction } from '../models/transaction.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -13,6 +13,19 @@ export class TransactionServiceTsService {
 
   public getTransactions(): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(this.apiUrl);
+  }
+
+    public mapToPayment(item: Transaction): Payment {
+    return {
+      id: item.displayId,
+      type: item.type,
+      payee: item.transaction_payee?.payeeFullName || '',
+      address: item.transaction_payee?.mailing_address?.address || '',
+      amount: parseFloat(item.amount.replace('$', '').replace(',', '')),
+      status: item.status,
+      date: item.date,
+      destination: item.transaction_printer?.printerName || ''
+    };
   }
 
 }

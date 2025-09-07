@@ -65,3 +65,14 @@ export interface Transaction {
   transaction_printer: Printer;
   transaction_reprint_printer: Printer;
 }
+
+export interface Payment {
+  id: string;
+  type: string;
+  payee: string;
+  address: string;
+  amount: number;
+  status: string;
+  date: string;
+  destination: string;
+}

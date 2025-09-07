@@ -1,0 +1,54 @@
+<div class="approve-payments-card">
+  <div class="header-actions flex align-items-center gap-3 flex-wrap">
+    <ng-container *ngFor="let tab of tabs">
+      <button
+        pButton
+        type="button"
+        class="custom-tab-button"
+        [class.active-tab]="activeTab === tab.key"
+        [ngClass]="{'custom-tab-badge-warning': tab.isWarning}"
+        (click)="setActiveTab(tab.key)"
+        [attr.aria-label]="tab.ariaLabel"
+      >
+        <i class="{{ tab.icon }}"></i>
+        {{ tab.label }}
+        <span
+          class="custom-tab-badge"
+          [ngClass]="{
+            'custom-tab-button-warning custom-tab-badge-warning':
+              (tab.key === 'sign' || tab.key === 'disburse') &&
+              activeTab === tab.key
+          }"
+        >
+          {{ getTotal(tab.key) }}
+        </span>
+      </button>
+    </ng-container>
+
+    <div class="dropdown-container" (clickOutside)="dropdownOpen = false">
+      <button
+        pButton
+        type="button"
+        class="custom-tab-button"
+        [class.active-tab]="activeTab === 'more'"
+        (click)="toggleDropdown()"
+        aria-label="More actions"
+      >
+        More
+        <span class="custom-tab-badge">{{ getTotal("more") }}</span>
+        <i class="pi pi-chevron-down"></i>
+      </button>
+
+      <ul *ngIf="dropdownOpen" class="dropdown-menu">
+        <li *ngFor="let action of moreActions">
+          <button
+            type="button"
+            (click)="action.command(); dropdownOpen = false"
+          >
+            {{ action.label }}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

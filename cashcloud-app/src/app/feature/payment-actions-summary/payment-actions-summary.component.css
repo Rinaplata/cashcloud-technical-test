@@ -1,0 +1,135 @@
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid #e9eaeb;
+  height: 56px;
+  width: 1494px;
+}
+
+.custom-tab-button {
+  background-color: white;
+  color: var(--surface-500);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.custom-tab-button:hover {
+  color: white;
+  background-color: var(--primary-color);
+  box-shadow: 0 0 0 1px #e9eaeb;
+  border: none;
+}
+
+.custom-tab-button.active-tab {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.custom-tab-button.active-tab:hover {
+  background-color: #8a5ff6;
+  border: none;
+}
+
+.p-button:not(:disabled):hover {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.custom-tab-badge-warning.active-tab .custom-tab-badge-warning {
+  background: #fffaeb;
+  color: #b54708;
+  border: 1px solid #fedf89;
+}
+
+.active-tab .custom-tab-badge {
+  background-color: #f9f5ff;
+  color: #6941c6;
+  border-color: #e9d7fe;
+}
+
+.custom-tab-badge {
+  background-color: #fcfbfe;
+  color: #6b28cc;
+  border-radius: 100px;
+  border: 1px solid #e9eaeb;
+  padding: 2px 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  width: 40px;
+  height: 28px;
+  text-align: center;
+  line-height: 1.5rem;
+  margin-left: auto;
+}
+
+.custom-tab-bagde-warning {
+  background-color: #fcfbfe;
+  color: #b54708;
+  border-radius: 100px;
+  border: 1px solid #fedf89;
+  padding: 2px 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  width: 40px;
+  height: 28px;
+  text-align: center;
+  line-height: 1.5rem;
+  margin-left: auto;
+}
+
+.active-tab .custom-tab-badge-warning {
+  background-color: #fcfbfe;
+  color: #b54708;
+  border-color: #fedf89;
+}
+
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  padding: 0.5rem 0;
+  background-color: white;
+  border: 1px solid #e9eaeb;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(17, 17, 17, 0.05);
+  z-index: 999;
+  min-width: 160px;
+}
+
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  color: var(--surface-700);
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  padding: 8px 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f5f5f5;
+}

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import "primeicons/primeicons.css";
 
 :root {
   /* Primary color*/
@@ -15,8 +16,9 @@
   --surface-200: #2e2e2e;
   --surface-300: #333333;
   --surface-400: #424242;
-  --surface-500: #505050;
+  --surface-500: #717680;
   --suface-600: #535862;
+  --surface-700: #414651;
 
   /* Color state*/
   --payment-status-pending-approval-processing: #FFAD33;

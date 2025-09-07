@@ -14,4 +14,5 @@ export class TransactionServiceTsService {
   public getTransactions(): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(this.apiUrl);
   }
+
 }

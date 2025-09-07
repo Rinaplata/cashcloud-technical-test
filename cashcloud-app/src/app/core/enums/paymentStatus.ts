@@ -10,5 +10,6 @@ export enum PaymentStatus {
   Voided = 'Voided',
   Canceled = 'Canceled',
   PendingResponse = 'Pending Response',
-  Reprinted = 'Reprinted'
+  Reprinted = 'Reprinted',
+  Approved = 'Approved'
 }

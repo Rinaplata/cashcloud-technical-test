@@ -1,11 +1,11 @@
 <div class="card">
   <div class="table-header">
-    <h2>Approve Payments <span class="badge">10</span></h2>
+    <h2>Approve Payments <span class="badge">{{ totalPayments() }}</span></h2>
     <div class="header-actions">
       <div class="column-options">
         <p-button type="button" label="Columns" icon="pi pi-th-large" [text]="true" [outlined]="true"
           class="p-button-secondary-outlined"></p-button>
-        <span class="column-count">12</span>
+        <span class="column-count">{{ columnCount }}</span>
       </div>
       <p-button type="button" label="Filters" icon="pi pi-filter" [text]="true" [outlined]="true"
         class="p-button-secondary-outlined"></p-button>
@@ -14,36 +14,24 @@
 
   <app-payment-actions-summary></app-payment-actions-summary>
 
-  <p-table [value]="payments" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="10"
-    [showCurrentPageReport]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  <p-table [value]="payments()" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="10"
+    [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [rowsPerPageOptions]="[10, 20, 50, { showAll: 'All' }]" [globalFilterFields]="['ID', 'Payee', 'Status']">
     <ng-template pTemplate="header">
       <tr>
-<!--         <th>
-          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-        </th> -->
-        <th pSortableColumn="paymentIdType">Payment ID/Type
+        <th #colHeader scope="col">
+          <p-tableHeaderCheckbox [attr.aria-label]="'select all'"></p-tableHeaderCheckbox>
+        </th>
+        <th #colHeader pSortableColumn="paymentIdType">
+          Payment ID/Type
           <p-sortIcon field="paymentIdType"></p-sortIcon>
         </th>
-        <th pSortableColumn="payee">Payee
-          <p-sortIcon field="payee"></p-sortIcon>
-        </th>
-        <th pSortableColumn="address">Address
-          <p-sortIcon field="address"></p-sortIcon>
-        </th>
-        <th pSortableColumn="amount">Amount
-          <p-sortIcon field="amount"></p-sortIcon>
-        </th>
-        <th pSortableColumn="status">Status
-          <p-sortIcon field="status"></p-sortIcon>
-        </th>
-        <th pSortableColumn="date">Date
-          <p-sortIcon field="date"></p-sortIcon>
-        </th>
-        <th pSortableColumn="destination">Destination
-          <p-sortIcon field="destination"></p-sortIcon>
-        </th>
+        <th #colHeader>Payee</th>
+        <th #colHeader>Address</th>
+        <th #colHeader>Amount</th>
+        <th #colHeader>Status</th>
+        <th #colHeader>Date</th>
+        <th #colHeader>Destination</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-payment>
@@ -54,6 +42,7 @@
         <td>
           <div class="payment-id">
             <span class="id-text">ID: {{ payment.id }}</span>
+            <br>
             <span class="type-text">{{ payment.type }}</span>
           </div>
         </td>
@@ -61,7 +50,9 @@
         <td>{{ payment.address }}</td>
         <td>{{ payment.amount }}</td>
         <td>
-          <span class="status-badge" [ngClass]="payment.statusClass">{{ payment.status }}</span>
+          <span class="status-badge" [ngClass]="payment.statusClass">{{
+            payment.status
+            }}</span>
         </td>
         <td>{{ payment.date }}</td>
         <td>{{ payment.destination }}</td>

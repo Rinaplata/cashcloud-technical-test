@@ -98,6 +98,7 @@ card {
     .type-text {
       font-size: var(--font-size-text-xs);
       color: var(--text-color-secondary);
+
     }
   }
 

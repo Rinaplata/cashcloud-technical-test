@@ -11,10 +11,6 @@ export class TransactionServiceTsService {
 
   constructor(private http: HttpClient) { }
 
-  /**
-   * Obtiene la lista de transacciones desde el archivo JSON.
-   * @returns Un Observable de un array de transacciones.
-   */
   public getTransactions(): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(this.apiUrl);
   }

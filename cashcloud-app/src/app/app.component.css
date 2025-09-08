@@ -58,6 +58,7 @@
   display: flex;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
+   margin-top: 24px
 }
 
 .warning-actions-panel {
@@ -146,4 +147,11 @@
   width: 1rem;
   height: 1rem;
   margin-right: 0.5rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
 }

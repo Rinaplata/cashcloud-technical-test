@@ -1,3 +1,4 @@
+import { ITransactionService, TRANSACTION_SERVICE } from './../../core/services/Itransaction.service.ts.service';
 import { Component, Output, EventEmitter, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
@@ -14,10 +15,13 @@ import { PaymentStatus } from '../../core/enums/paymentStatus';
   imports: [CommonModule, ButtonModule, CardModule],
   templateUrl: './payment-actions-summary.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrl: './payment-actions-summary.component.css'
+  styleUrl: './payment-actions-summary.component.css',
+  providers: [
+    { provide: TRANSACTION_SERVICE, useClass: TransactionServiceTsService }
+  ],
 })
 export class PaymentActionsSummaryComponent {
-  private transactionService = inject(TransactionServiceTsService);
+  private transactionService = inject(TRANSACTION_SERVICE);
   allPayments = toSignal(
     this.transactionService.getTransactions().pipe(
       map(transactions => transactions.map(t => this.transactionService.mapToPayment(t)))
@@ -95,5 +99,4 @@ export class PaymentActionsSummaryComponent {
   toggleDropdown(): void {
     this.dropdownOpen.update(val => !val);
   }
-
 }

@@ -3,11 +3,12 @@ import { Payment, Transaction } from '../models/transaction.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PaymentStatus } from '../enums/paymentStatus';
+import { ITransactionService } from './Itransaction.service.ts.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TransactionServiceTsService {
+export class TransactionServiceTsService implements ITransactionService {
    private apiUrl = '../../../assets/seed.json';
 
   constructor(private http: HttpClient) { }

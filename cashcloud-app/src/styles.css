@@ -53,3 +53,21 @@
 body {
   font-family: 'Inter', sans-serif;
 }
+
+.dark-mode-button {
+  background-color: var(--primary-color) !important;
+  color: var(--primary-color-text) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  border: 1px solid var(--primary-color) !important;
+  border-radius: 8px;
+}
+
+html.app-dark {
+    --text-color-900: #ffffff;
+    --text-color: #f0f0f0;
+    --text-color-secondary: #A4A7AE;
+    --surface-0: #1a1a1a;
+    --surface-50: #202020;
+    --surface-100: #252525;
+
+}

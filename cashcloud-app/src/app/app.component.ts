@@ -34,6 +34,7 @@ export class AppComponent implements OnInit{
   payments = signal<Payment[]>([]);
   batchId = signal<string>('');
   currentTab = signal<string>('view');
+  isDarkMode = signal(false);
 
   filterVisible = false;
   totalPayments = computed(() => this.transactions().length);
@@ -58,5 +59,14 @@ export class AppComponent implements OnInit{
       },
       error: (err) => console.error('Error al obtener transacciones:', err)
     });
+  }
+
+  toggleDarkMode() {
+    this.isDarkMode.update(value => !value);
+    if (this.isDarkMode()) {
+      document.documentElement.classList.add('app-dark');
+    } else {
+      document.documentElement.classList.remove('app-dark');
+    }
   }
 }

@@ -49,15 +49,9 @@
         <td>{{ payment.payee }}</td>
         <td>{{ payment.address }}</td>
         <td>{{ payment.amount }}</td>
-<!--         <td>
-          <span class="status-badge" [ngClass]="payment.statusClass">{{
-            payment.status
-            }}</span>
-        </td> -->
         <td>
-              <!-- USANDO EL NUEVO COMPONENTE -->
-              <app-status-badge [status]="payment.status"></app-status-badge>
-            </td>
+          <app-status-badge [status]="payment.status"></app-status-badge>
+        </td>
         <td>{{ payment.date }}</td>
         <td>{{ payment.destination }}</td>
         <td>

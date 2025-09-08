@@ -1,13 +1,13 @@
 .header-actions {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  padding: 6px;
-  border-radius: 12px;
-  border: 1px solid #e9eaeb;
-  height: 56px;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 6px;
+    border-radius: 12px;
+    border: 1px solid #e9eaeb;
+    height: 56px;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .custom-tab-button {

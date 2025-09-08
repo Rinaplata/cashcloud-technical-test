@@ -14,6 +14,4 @@ export class PaymentSummaryCardComponent {
   @Input() checks!: number;
   @Input() ach!: number;
   @Input() digitalChecks!: number;
-
-
 }

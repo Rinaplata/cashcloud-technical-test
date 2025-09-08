@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { PaymentStatus } from '../../core/enums/paymentStatus';
 import { NgClass } from '@angular/common';
 

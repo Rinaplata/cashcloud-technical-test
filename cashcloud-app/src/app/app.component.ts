@@ -1,6 +1,6 @@
 import { TransactionServiceTsService } from './core/services/transaction.service.ts.service';
-import { Payment, Transaction, Payee } from './core/models/transaction.model';
-import { Component, computed, inject, signal } from '@angular/core';
+import { Payment, Transaction} from './core/models/transaction.model';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -24,7 +24,7 @@ import { type } from './core/enums/transactionType';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   private transactionServiceTsService = inject(TransactionServiceTsService)
 
   title = 'No. of Payments:';
@@ -58,9 +58,5 @@ export class AppComponent {
       },
       error: (err) => console.error('Error al obtener transacciones:', err)
     });
-  }
-
-  handleFilter(filters: any) {
-    console.log('Filtros aplicados:', filters);
   }
 }

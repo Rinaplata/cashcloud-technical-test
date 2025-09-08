@@ -44,6 +44,8 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ng test
 ```
 
+
+
 ## Running end-to-end tests
 
 For end-to-end (e2e) testing, run:
@@ -51,6 +53,13 @@ For end-to-end (e2e) testing, run:
 ```bash
 ng e2e
 ```
+
+## Guide to running tests with Playwright
+
+```bash
+npx playwright test
+```
+[documentation](https://playwright.dev/docs/intro)
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 

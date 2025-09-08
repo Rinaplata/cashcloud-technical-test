@@ -25,22 +25,24 @@ export class PaymentActionsSummaryComponent {
   );
 
   activeTab = signal<string>('all');
+  activeMoreTab = signal<string | null>(null);
   filteredPayments = signal<Payment[]>([]);
 
   statusTotals = computed(() => {
     const counts: { [key: string]: number } = {
       all: this.allPayments().length,
-      approve: this.allPayments().filter(p=> p.status == PaymentStatus.Approved).length,
-      sign: this.allPayments().filter(p=> p.status == PaymentStatus.Signed).length,
-      disburse: this.allPayments().filter(p=> p.status == PaymentStatus.PendingDisbursement).length,
-      processing: this.allPayments().filter(p=> p.status == PaymentStatus.Processing).length,
-      completed: this.allPayments().filter(p=> p.status == PaymentStatus.Completed).length,
-      rejected: this.allPayments().filter(p=> p.status == PaymentStatus.Rejected).length,
-      printed: this.allPayments().filter(p=> p.status == PaymentStatus.Printed).length,
-      Pending: this.allPayments().filter(p=> p.status == PaymentStatus.Pending).length,
+      approve: this.allPayments().filter(p => p.status == PaymentStatus.Approved).length,
+      sign: this.allPayments().filter(p => p.status == PaymentStatus.Signed).length,
+      disburse: this.allPayments().filter(p => p.status == PaymentStatus.PendingDisbursement).length,
+      processing: this.allPayments().filter(p => p.status == PaymentStatus.Processing).length,
+      completed: this.allPayments().filter(p => p.status == PaymentStatus.Completed).length,
+      rejected: this.allPayments().filter(p => p.status == PaymentStatus.Rejected).length,
+      pending: this.allPayments().filter(p => p.status == PaymentStatus.Pending).length,
+      canceled: this.allPayments().filter(p => p.status == PaymentStatus.Canceled).length,
       more: 0
     };
 
+    counts['more'] = counts['rejected'] + counts['canceled'] + counts['pending'];
     return counts;
   });
 
@@ -52,43 +54,33 @@ export class PaymentActionsSummaryComponent {
     { key: 'sign', label: 'Sign', icon: 'pi pi-pencil', ariaLabel: 'Sign', isWarning: true },
     { key: 'disburse', label: 'Disburse', icon: 'pi pi-play', ariaLabel: 'Disburse', isWarning: true },
     { key: 'processing', label: 'Processing', icon: 'pi pi-refresh', ariaLabel: 'Processing' },
-    { key: 'completed', label: 'completed', icon: 'pi pi-clone',  ariaLabel: 'Completed' }
+    { key: 'completed', label: 'completed', icon: 'pi pi-clone', ariaLabel: 'Completed' }
   ];
 
   moreActions = [
-    { label: 'Printed', command: () => this.setActiveTab('printed') },
-    { label: 'Pending', command: () => this.setActiveTab('Pending') }
+    { key: 'rejected', label: 'Rejected', icon: 'pi pi-times-circle', total: this.statusTotals()['rejected'], isWarning: true },
+    { key: 'pending', label: 'Pending', icon: 'pi pi-clock', total: this.statusTotals()['pending'], isWarning: false },
+    { key: 'canceled', label: 'Canceled', icon: 'pi pi-ban', total: this.statusTotals()['canceled'], isWarning: true }
   ];
+
+  isMoreTabActive = computed(() => {
+    const activeKey = this.activeTab();
+    return this.moreActions.some(action => action.key === activeKey);
+  });
+
+  activeMoreAction = computed(() => {
+    const activeKey = this.activeTab();
+    const action = this.moreActions.find(action => action.key === activeKey);
+    return {...action, total: this.statusTotals()[activeKey] };
+  });
 
   setActiveTab(tab: string): void {
     this.activeTab.set(tab);
-    let filtered: Payment[] = [];
-    switch (tab) {
-      case 'all':
-        filtered = this.allPayments();
-        break;
-      case 'rejected':
-        filtered = this.allPayments().filter(p => p.status.toLowerCase() === 'rejected');
-        break;
-      case 'returned':
-        filtered = this.allPayments().filter(p => p.status.toLowerCase() === 'returned');
-        break;
-      default:
-        const statusMap: { [key: string]: string } = {
-          'approve': 'pending approval',
-          'sign': 'pending signature',
-          'disburse': 'disbursement',
-          'processing': 'processing',
-          'completed': 'completed',
-        };
-        const statusKey = statusMap[tab];
-        if (statusKey) {
-          filtered = this.allPayments().filter(p => p.status.toLowerCase() === statusKey);
-        }
-        break;
-    }
-    this.filteredPayments.set(filtered);
     this.dropdownOpen.set(false);
+  }
+
+  selectMoreAction(key: string): void {
+    this.setActiveTab(key);
   }
 
   getTotal(status: string): number {
@@ -96,7 +88,16 @@ export class PaymentActionsSummaryComponent {
     return totals[status] || 0;
   }
 
+/*   getMoreTotal(): number {
+    const activeKey = this.activeTab();
+    if (this.moreActions.some(action => action.key === activeKey)) {
+      return this.statusTotals()[activeKey] || 0;
+    }
+    return this.statusTotals()['more'];
+  } */
+
   toggleDropdown(): void {
     this.dropdownOpen.update(val => !val);
   }
+
 }

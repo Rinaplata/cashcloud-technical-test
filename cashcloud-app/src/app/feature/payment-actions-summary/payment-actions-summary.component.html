@@ -1,54 +1,62 @@
 <div class="approve-payments-card">
   <div class="header-actions flex align-items-center gap-3 flex-wrap">
     <ng-container *ngFor="let tab of tabs">
-      <button
-        pButton
-        type="button"
-        class="custom-tab-button"
-        [class.active-tab]="activeTab() === tab.key"
-        [ngClass]="{'custom-tab-badge-warning': tab.isWarning}"
-        (click)="setActiveTab(tab.key)"
-        [attr.aria-label]="tab.ariaLabel"
-      >
+      <button pButton type="button" class="custom-tab-button" [class.active-tab]="activeTab() === tab.key"
+        [ngClass]="{'custom-tab-badge-warning': tab.isWarning}" (click)="setActiveTab(tab.key)"
+        [attr.aria-label]="tab.ariaLabel">
         <i class="{{ tab.icon }}"></i>
         {{ tab.label }}
-        <span
-          class="custom-tab-badge"
-          [ngClass]="{
+        <span class="custom-tab-badge" [ngClass]="{
             'custom-tab-button-warning custom-tab-badge-warning':
               (tab.key === 'sign' || tab.key === 'disburse') &&
               activeTab() === tab.key
-          }"
-        >
+          }">
           {{ getTotal(tab.key) }}
         </span>
       </button>
     </ng-container>
 
-    <div class="dropdown-container" (clickOutside)="dropdownOpen.set(false)">
-      <button
-        pButton
-        type="button"
-        class="custom-tab-button"
-        [class.active-tab]="activeTab() === 'more'"
-        (click)="toggleDropdown()"
-        aria-label="More actions"
-      >
-        More
-        <span class="custom-tab-badge">{{ getTotal("more") }}</span>
-        <i class="pi pi-chevron-down"></i>
-      </button>
-
-      <ul *ngIf="dropdownOpen" class="dropdown-menu">
-        <li *ngFor="let action of moreActions">
+    <ng-container *ngIf="isMoreTabActive()">
           <button
             type="button"
-            (click)="action.command(); dropdownOpen.set(false)"
+            class="custom-tab-button active-tab"
+            [ngClass]="{'custom-tab-button-warning': activeMoreAction().isWarning}"
+            [attr.aria-label]="activeMoreAction().label"
+            (click)="selectMoreAction(activeMoreAction().key || 'all')"
           >
-            {{ action.label }}
+            <i class="{{ activeMoreAction().icon }}"></i>
+            <span class="ml-2">{{ activeMoreAction().label }}</span>
+            <span class="custom-tab-badge custom-tab-badge-warning">
+              {{ activeMoreAction().total }}
+            </span>
           </button>
-        </li>
-      </ul>
-    </div>
+        </ng-container>
+
+        <div class="relative dropdown-container">
+          <button
+            type="button"
+            class="custom-tab-button"
+            [class.active-tab]="activeTab() === 'more'"
+            (click)="toggleDropdown()"
+            aria-label="More actions"
+          >
+            <span class="mr-2">More</span>
+            <span class="custom-tab-badge">{{ statusTotals()['more']}}</span>
+            <i class="pi pi-chevron-down ml-2"></i>
+          </button>
+
+          <ul *ngIf="dropdownOpen()" class="dropdown-menu absolute top-full left-0 z-10 bg-white shadow-lg rounded-md mt-1 py-1">
+            <li *ngFor="let action of moreActions">
+              <button
+                type="button"
+                class="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                [class.active-tab]="activeTab() === action.key"
+                (click)="selectMoreAction(action.key)"
+              >
+                {{ action.label }}
+              </button>
+            </li>
+          </ul>
+        </div>
   </div>
 </div>

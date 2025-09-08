@@ -5,13 +5,13 @@ Includes tabs with filters, configurable table, contextual actions, and state pe
 
 ---
 
-## 🎯 Objetivo
+## 🎯  Objective
 - Build the **payment module** according to the design.
 - Demonstrate **technical knowledge**, **problem-solving approach**, and **coding style**.
 
 ---
 
-## 🚀 Stack Tecnológico
+## 🚀 Technology Stack
 - **Angular 19** (standalone components)
 - **TypeScript** con `strict` habilitado
 - **RxJS** for gestion (Signals / Component Store)
@@ -27,4 +27,11 @@ Clone the repo and enter the folder.
 
 ```bash
 git clone 
+```
+---
 
+## Guide to running tests with Playwrigh
+```bash
+npx playwright test
+```
+[documentation](https://playwright.dev/docs/intro)

@@ -54,13 +54,6 @@ For end-to-end (e2e) testing, run:
 ng e2e
 ```
 
-## Guide to running tests with Playwright
-
-```bash
-npx playwright test
-```
-[documentation](https://playwright.dev/docs/intro)
-
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
 ## Additional Resources

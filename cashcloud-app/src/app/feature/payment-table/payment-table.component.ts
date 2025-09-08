@@ -9,6 +9,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Payment, Transaction } from '../../core/models/transaction.model';
 import { map, tap } from 'rxjs';
 import { StatusBadgeComponent } from "../../shared/status-badge/status-badge.component";
+import { PaymentColumns } from '../../core/enums/paymentColumns';
 
 /* interface Payment {
   id: string;
@@ -40,8 +41,8 @@ export class PaymentTableComponent implements AfterViewInit, OnInit {
   private transactionService = inject(TransactionServiceTsService);
   PaymentStatus = PaymentStatus;
   @ViewChildren('colHeader')
-  colHeaders!: QueryList<any>;
-  columnCount: number = 0;
+  colHeaders!: QueryList<PaymentColumns>;
+  columnCount = 0;
 
   ngAfterViewInit(): void {
     this.columnCount = this.colHeaders.length;

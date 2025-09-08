@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -32,13 +32,13 @@ import { InputNumberModule } from 'primeng/inputnumber';
   templateUrl: './filter-modal.component.html',
   styleUrl: './filter-modal.component.css',
 })
-export class FilterModalComponent {
-  @Input() display: boolean = false;
+export class FilterModalComponent implements OnInit {
+  @Input() display = false;
   @Output() displayChange = new EventEmitter<boolean>();
   @Output() apply = new EventEmitter<any>();
 
   filterForm!: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  private fb = inject(FormBuilder);
   FilterField = FilterField;
 
   filterFields = [
@@ -49,9 +49,6 @@ export class FilterModalComponent {
     { key: FilterField.PAYMENT_ID, name: 'Payment ID' },
     { key: FilterField.PAYMENT_STATUS, name: 'Payment Status' },
   ];
-
-  selectedCategories: any[] = [];
-
 
   categories = [
     { key: 'category1', name: 'Check' },

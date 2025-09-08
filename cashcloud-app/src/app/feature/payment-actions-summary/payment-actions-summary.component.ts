@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Output, EventEmitter, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -31,7 +31,7 @@ export class PaymentActionsSummaryComponent {
   filteredPayments = signal<Payment[]>([]);
 
   statusTotals = computed(() => {
-    const counts: { [key: string]: number } = {
+    const counts: Record<string, number> = {
       all: this.allPayments().length,
       approve: this.allPayments().filter(p => p.status == PaymentStatus.Approved).length,
       sign: this.allPayments().filter(p => p.status == PaymentStatus.Signed).length,

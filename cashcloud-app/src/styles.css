@@ -5,6 +5,13 @@
   /* Primary color*/
   --primary-color: #7F56D9;
   --primary-color-text: #ffffff;
+  --p-checkbox-checked-background: var(--primary-color);
+  --p-checkbox-checked-border-color: var(--primary-color);
+  --p-checkbox-icon-color: #fff;
+  --p-emerald-500: #7F56D9;
+  --p-primary-500:#7F56D9 !important;
+  --p-primary-600: #717680 !important;
+
 
   --text-color: #f0f0f0;
   --text-color-secondary: #717680;

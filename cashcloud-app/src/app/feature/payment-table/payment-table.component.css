@@ -172,3 +172,15 @@ tr:hover {
   background-color: #F9FAFB !important;
   border-bottom: 1px solid #EAECF0 !important;
 }
+
+:host ::ng-deep .p-paginator-page.p-paginator-page-selected
+ {
+    background: #f0f0ff !important;
+    color: #7f56d9;
+}
+
+.p-button-text {
+    background: transparent;
+    border-color: transparent;
+    color: #475569 !important;
+}

@@ -11,17 +11,18 @@
 }
 
 .custom-tab-button {
-  background-color: white;
-  color: var(--surface-500);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 12px;
-  font-weight: var(--font-weight-medium);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  text-decoration: none;
+    background-color: white;
+    color: var(--surface-500);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
 }
 
 .custom-tab-button:hover {

@@ -8,6 +8,7 @@
 
   --text-color: #f0f0f0;
   --text-color-secondary: #717680;
+  --text-color-900: #181D27;
 
   /* Surface color */
   --surface-0: #1a1a1a;
@@ -15,7 +16,7 @@
   --surface-100: #252525;
   --surface-200: #2e2e2e;
   --surface-300: #333333;
-  --surface-400: #424242;
+  --surface-400: #A4A7AE;
   --surface-500: #717680;
   --suface-600: #535862;
   --surface-700: #414651;

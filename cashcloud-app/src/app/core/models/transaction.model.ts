@@ -1,4 +1,5 @@
 import { PaymentStatus } from "../enums/paymentStatus";
+import { type } from "../enums/transactionType";
 
 export interface Address {
   address: string;
@@ -52,7 +53,7 @@ export interface Transaction {
   checkNumber: string;
   amount: string;
   bankAccountId: string;
-  type: 'Digital Check' | 'ACH/EFT';
+  type: type
   signaturesRequired: number;
   signatureStatus: string;
   date: string;

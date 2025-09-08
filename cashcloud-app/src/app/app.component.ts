@@ -32,6 +32,8 @@ export class AppComponent {
   payorName = signal<string>('');
   transactions = signal<Transaction[]>([]);
   payments = signal<Payment[]>([]);
+  batchId = signal<string>('');
+  currentTab = signal<string>('view');
 
   filterVisible = false;
   totalPayments = computed(() => this.transactions().length);

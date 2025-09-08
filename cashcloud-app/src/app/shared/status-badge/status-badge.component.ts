@@ -17,17 +17,20 @@ export class StatusBadgeComponent {
       case PaymentStatus.PendingApproval:
       case PaymentStatus.Processing:
       case PaymentStatus.PendingResponse:
+      case PaymentStatus.Approved:
         return 'badge-pending-approval';
 
       case PaymentStatus.PendingDigitalSignature:
         return 'badge-pending-signature';
 
       case PaymentStatus.PendingDisbursement:
+      case PaymentStatus.Pending:
         return 'badge-disbursement';
 
       case PaymentStatus.Completed:
       case PaymentStatus.Mailed:
       case PaymentStatus.Printed:
+      case PaymentStatus.Signed:
         return 'badge-completed';
 
       case PaymentStatus.Rejected:

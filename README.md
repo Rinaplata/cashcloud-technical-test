@@ -30,7 +30,8 @@ Accessibility was validated with **WAVE** and **IBM Equal Access Checker**:
 - Improvements were documented, and accessibility-friendly practices (e.g., `aria-label`, `sr-only`, semantic HTML) were applied where possible.
 - Despite improvements in PrimeNG 19 accessibility, validation with tools such as WAVE and IBM Equal Access Checker still detected warnings due to the library's default structures. Although these issues can be resolved, it was not possible to address them completely due to time constraints. Nevertheless, the best possible accessibility practices were applied. 
 
-[Accessibility_Report-CashcloudApp](Accessibility_Report-CashcloudApp\Accessibility_Report-CashcloudApp.xlsx)
+[📊 Accessibility Report (Excel)](Accessibility_Report-CashcloudApp/Accessibility_Report-CashcloudApp.xlsx)
+
 ---
 
 ## ⚙️ Installation and execution

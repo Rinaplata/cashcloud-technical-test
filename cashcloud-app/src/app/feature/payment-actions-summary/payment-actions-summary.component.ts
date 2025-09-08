@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, inject, signal, computed } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -13,6 +13,7 @@ import { PaymentStatus } from '../../core/enums/paymentStatus';
   standalone: true,
   imports: [CommonModule, ButtonModule, CardModule],
   templateUrl: './payment-actions-summary.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './payment-actions-summary.component.css'
 })
 export class PaymentActionsSummaryComponent {
@@ -24,6 +25,7 @@ export class PaymentActionsSummaryComponent {
     { initialValue: [] }
   );
 
+  @Output() tabSelected = new EventEmitter<string>();
   activeTab = signal<string>('all');
   activeMoreTab = signal<string | null>(null);
   filteredPayments = signal<Payment[]>([]);
@@ -35,6 +37,7 @@ export class PaymentActionsSummaryComponent {
       sign: this.allPayments().filter(p => p.status == PaymentStatus.Signed).length,
       disburse: this.allPayments().filter(p => p.status == PaymentStatus.PendingDisbursement).length,
       processing: this.allPayments().filter(p => p.status == PaymentStatus.Processing).length,
+      pendingResponse: this.allPayments().filter(p => p.status == PaymentStatus.PendingResponse).length,
       completed: this.allPayments().filter(p => p.status == PaymentStatus.Completed).length,
       rejected: this.allPayments().filter(p => p.status == PaymentStatus.Rejected).length,
       pending: this.allPayments().filter(p => p.status == PaymentStatus.Pending).length,
@@ -60,7 +63,7 @@ export class PaymentActionsSummaryComponent {
   moreActions = [
     { key: 'rejected', label: 'Rejected', icon: 'pi pi-times-circle', total: this.statusTotals()['rejected'], isWarning: true },
     { key: 'pending', label: 'Pending', icon: 'pi pi-clock', total: this.statusTotals()['pending'], isWarning: false },
-    { key: 'canceled', label: 'Canceled', icon: 'pi pi-ban', total: this.statusTotals()['canceled'], isWarning: true }
+    { key: 'canceled', label: 'Canceled', icon: 'pi pi-ban', total: this.statusTotals()['canceled'], isWarning: true },
   ];
 
   isMoreTabActive = computed(() => {
@@ -77,6 +80,7 @@ export class PaymentActionsSummaryComponent {
   setActiveTab(tab: string): void {
     this.activeTab.set(tab);
     this.dropdownOpen.set(false);
+    this.tabSelected.emit(tab);
   }
 
   selectMoreAction(key: string): void {
@@ -87,14 +91,6 @@ export class PaymentActionsSummaryComponent {
     const totals = this.statusTotals();
     return totals[status] || 0;
   }
-
-/*   getMoreTotal(): number {
-    const activeKey = this.activeTab();
-    if (this.moreActions.some(action => action.key === activeKey)) {
-      return this.statusTotals()[activeKey] || 0;
-    }
-    return this.statusTotals()['more'];
-  } */
 
   toggleDropdown(): void {
     this.dropdownOpen.update(val => !val);

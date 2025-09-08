@@ -1,71 +1,71 @@
-<div class="card">
-  <div class="table-header">
-    <h2>Approve Payments <span class="badge">{{ totalPayments() }}</span></h2>
-    <div class="header-actions">
-      <div class="column-options">
-        <p-button type="button" label="Columns" icon="pi pi-th-large" [text]="true" [outlined]="true"
-          class="p-button-secondary-outlined"></p-button>
-        <span class="column-count">{{ columnCount }}</span>
-      </div>
-      <p-button type="button" label="Filters" icon="pi pi-filter" [text]="true" [outlined]="true"
-        class="p-button-secondary-outlined"></p-button>
-    </div>
-  </div>
-
-  <app-payment-actions-summary></app-payment-actions-summary>
-
-  <p-table [value]="payments()" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="10"
-    [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rowsPerPageOptions]="[10, 20, 50, { showAll: 'All' }]" [globalFilterFields]="['ID', 'Payee', 'Status']">
-    <ng-template pTemplate="header">
-      <tr>
-        <th #colHeader scope="col">
-          <p-tableHeaderCheckbox [attr.aria-label]="'select all'"></p-tableHeaderCheckbox>
-        </th>
-        <th #colHeader pSortableColumn="paymentIdType">
-          Payment ID/Type
-          <p-sortIcon field="paymentIdType"></p-sortIcon>
-        </th>
-        <th #colHeader>Payee</th>
-        <th #colHeader>Address</th>
-        <th #colHeader>Amount</th>
-        <th #colHeader>Status</th>
-        <th #colHeader>Date</th>
-        <th #colHeader>Destination</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-payment>
-      <tr>
-        <td>
-          <p-tableCheckbox [value]="payment"></p-tableCheckbox>
-        </td>
-        <td>
-          <div class="payment-id">
-            <span class="id-text">ID: {{ payment.id }}</span>
-            <br>
-            <span class="type-text">{{ payment.type }}</span>
+    <div class="card">
+      <div class="table-header">
+        <h2> {{ statusActual() }} <span class="badge">{{ totalPayments() }}</span></h2>
+        <div class="header-actions">
+          <div class="column-options">
+            <p-button type="button" label="Columns" icon="pi pi-th-large" [text]="true" [outlined]="true"
+              class="p-button-secondary-outlined"></p-button>
+            <span class="column-count">{{ columnCount }}</span>
           </div>
-        </td>
-        <td>{{ payment.payee }}</td>
-        <td>{{ payment.address }}</td>
-        <td>{{ payment.amount }}</td>
-        <td>
-          <app-status-badge [status]="payment.status"></app-status-badge>
-        </td>
-        <td>{{ payment.date }}</td>
-        <td>{{ payment.destination }}</td>
-        <td>
-          <i class="pi pi-ellipsis-h table-action-icon"></i>
-        </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="paginatorleft">
-      <div class="p-paginator-left-content">
-        <p-button type="button" icon="pi pi-arrow-left" label="Previous" [text]="true" [outlined]="true"
-          class="p-button-secondary-outlined"></p-button>
-        <p-button type="button" icon="pi pi-arrow-right" label="Next" [text]="true" [outlined]="true"
-          class="p-button-secondary-outlined"></p-button>
+          <p-button type="button" label="Filters" icon="pi pi-filter" [text]="true" [outlined]="true"
+              class="p-button-secondary-outlined"></p-button>
+        </div>
       </div>
-    </ng-template>
-  </p-table>
-</div>
+
+      <app-payment-actions-summary (tabSelected)="filterPaymentsByStatus($event)"></app-payment-actions-summary>
+
+      <p-table [value]="filteredPayments()" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="10"
+        [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10, 20, 50, { showAll: 'All' }]" [globalFilterFields]="['id', 'payee', 'status']">
+        <ng-template pTemplate="header">
+          <tr>
+            <th #colHeader scope="col">
+              <p-tableHeaderCheckbox [attr.aria-label]="'select all'"></p-tableHeaderCheckbox>
+            </th>
+            <th #colHeader pSortableColumn="id">
+              Payment ID/Type
+              <p-sortIcon field="id"></p-sortIcon>
+            </th>
+            <th #colHeader>Payee</th>
+            <th #colHeader>Address</th>
+            <th #colHeader>Amount</th>
+            <th #colHeader>Status</th>
+            <th #colHeader>Date</th>
+            <th #colHeader>Destination</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-payment>
+          <tr>
+            <td>
+              <p-tableCheckbox [value]="payment"></p-tableCheckbox>
+            </td>
+            <td>
+              <div class="payment-id">
+                <span class="id-text">ID: {{ payment.id }}</span>
+                <br>
+                <span class="type-text">{{ payment.type }}</span>
+              </div>
+            </td>
+            <td>{{ payment.payee }}</td>
+            <td>{{ payment.address }}</td>
+            <td>{{ payment.amount }}</td>
+            <td>
+              <app-status-badge [status]="payment.status"></app-status-badge>
+            </td>
+            <td>{{ payment.date }}</td>
+            <td>{{ payment.destination }}</td>
+            <td>
+              <i class="pi pi-ellipsis-h table-action-icon"></i>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+          <div class="p-paginator-left-content">
+            <p-button type="button" icon="pi pi-arrow-left" label="Previous" [text]="true" [outlined]="true"
+              class="p-button-secondary-outlined"></p-button>
+            <p-button type="button" icon="pi pi-arrow-right" label="Next" [text]="true" [outlined]="true"
+              class="p-button-secondary-outlined"></p-button>
+          </div>
+        </ng-template>
+      </p-table>
+    </div>

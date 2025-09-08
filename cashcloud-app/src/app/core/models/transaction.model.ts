@@ -1,3 +1,5 @@
+import { PaymentStatus } from "../enums/paymentStatus";
+
 export interface Address {
   address: string;
   idPayeeAddress: string;
@@ -55,7 +57,7 @@ export interface Transaction {
   signatureStatus: string;
   date: string;
   createdAt: string;
-  status: 'Approved' | 'Pending' | 'Denied' | 'Voided';
+  status: PaymentStatus;
   transactionPrinted: boolean;
   printerId: string;
   reprintPrinterId: string;

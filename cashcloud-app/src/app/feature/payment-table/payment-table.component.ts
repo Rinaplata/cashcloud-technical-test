@@ -9,6 +9,7 @@ import { PaymentStatus } from '../../core/enums/paymentStatus';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Transaction } from '../../core/models/transaction.model';
 import { map, tap } from 'rxjs';
+import { StatusBadgeComponent } from "../../shared/status-badge/status-badge.component";
 
 interface Payment {
   id: string;
@@ -30,9 +31,9 @@ interface Payment {
     TableModule,
     ButtonModule,
     CheckboxModule,
-    NgClass,
-    PaymentActionsSummaryComponent
-  ],
+    PaymentActionsSummaryComponent,
+    StatusBadgeComponent
+],
   templateUrl: './payment-table.component.html',
   styleUrl: './payment-table.component.css'
 })
